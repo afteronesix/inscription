@@ -105,25 +105,25 @@ export default function Ierc() {
 
   const run = useCallback(() => {
     if (!privateKey) {
-      pushLog("没有私钥", "error");
+      pushLog("No private key", "error");
       setRunning(false);
       return;
     }
 
     if (!tick) {
-      pushLog("没有 tick", "error");
+      pushLog("No tick", "error");
       setRunning(false);
       return;
     }
 
     if (!amount) {
-      pushLog("没有数量", "error");
+      pushLog("No amount", "error");
       setRunning(false);
       return;
     }
 
     if (!difficulty) {
-      pushLog("没有难度", "error");
+      pushLog("No difficulty", "error");
       setRunning(false);
       return;
     }
@@ -153,22 +153,22 @@ export default function Ierc() {
         <FormControlLabel
           value="prod"
           control={<Radio />}
-          label="正式环境"
+          label="Production Environment"
           disabled={running}
         />
         <FormControlLabel
           value="test"
           control={<Radio />}
-          label="测试环境"
+          label="Test Environment"
           disabled={running}
         />
       </RadioGroup>
 
       <div className=" flex flex-col gap-2">
-        <span>私钥（必填）:</span>
+        <span>Private Key (Required):</span>
         <TextField
           size="small"
-          placeholder="私钥，带不带 0x 都行，程序会自动处理"
+          placeholder="Private key, with or without 0x, the program will handle it automatically"
           disabled={running}
           onChange={(e) => {
             const text = e.target.value;
@@ -184,10 +184,10 @@ export default function Ierc() {
       </div>
 
       <div className=" flex flex-col gap-2">
-        <span>Tick（必填，例子：ierc-m5）:</span>
+        <span>Tick (Required, example: ierc-m5):</span>
         <TextField
           size="small"
-          placeholder="tick，例子：ierc-m5"
+          placeholder="tick, example: ierc-m5"
           disabled={running}
           onChange={(e) => {
             const text = e.target.value;
@@ -197,11 +197,11 @@ export default function Ierc() {
       </div>
 
       <div className=" flex flex-col gap-2">
-        <span>数量（必填，每张数量）:</span>
+        <span>Amount (Required, amount per item):</span>
         <TextField
           type="number"
           size="small"
-          placeholder="数量，例子：10000"
+          placeholder="Amount, example: 10000"
           disabled={running}
           onChange={(e) => {
             const num = Number(e.target.value);
@@ -211,10 +211,10 @@ export default function Ierc() {
       </div>
 
       <div className=" flex flex-col gap-2">
-        <span>难度（必填，十六进制，例子：0x00000）:</span>
+        <span>Difficulty (Required, hexadecimal, example: 0x00000):</span>
         <TextField
           size="small"
-          placeholder="难度，十六进制，例子：0x00000"
+          placeholder="Difficulty, hexadecimal, example: 0x00000"
           disabled={running}
           onChange={(e) => {
             const text = e.target.value;
@@ -225,7 +225,7 @@ export default function Ierc() {
 
       <div className=" flex flex-col gap-2">
         <div className=" flex items-center gap-2">
-          <span>cpu 核心数:</span>
+          <span>CPU Core Count:</span>
           <Button
             size="small"
             color="secondary"
@@ -235,7 +235,7 @@ export default function Ierc() {
               setMineRateList([]);
             }}
           >
-            自定义
+            Custom
           </Button>
         </div>
         {customCpu <= 0 ? (
@@ -263,7 +263,7 @@ export default function Ierc() {
           <TextField
             type="number"
             size="small"
-            placeholder="cpu 核心数，例子：12"
+            placeholder="CPU core count, example: 12"
             disabled={running}
             value={customCpu}
             onChange={(e) => {
@@ -275,7 +275,7 @@ export default function Ierc() {
       </div>
 
       <div className=" flex flex-col gap-2">
-        <span>RPC（选填，默认公共，http，最好用自己的）:</span>
+        <span>RPC (Optional, default public, http, best to use your own):</span>
         <TextField
           size="small"
           placeholder="RPC"
@@ -289,12 +289,13 @@ export default function Ierc() {
 
       <div className=" flex flex-col gap-2">
         <span>
-          gas 溢价（选填，启动程序时候的 gasPrice 乘以溢价作为付出的最高 gas）:
+          Gas Premium (Optional, the gasPrice at startup multiplied by the
+          premium is the max gas paid):
         </span>
         <TextField
           type="number"
           size="small"
-          placeholder="默认 110 也就是 1.1 倍率，最低限制 100，例子: 110"
+          placeholder="Default 110 (which is 1.1x multiplier), minimum 100, example: 110"
           disabled={running}
           onChange={(e) => {
             const num = Number(e.target.value);
@@ -316,11 +317,11 @@ export default function Ierc() {
           }
         }}
       >
-        {running ? "运行中" : "运行"}
+        {running ? "Running" : "Run"}
       </Button>
 
       <Log
-        title={`日志（效率 => ${mineRate} c/s 成功次数 => ${successCount}）:`}
+        title={`Log (Efficiency => ${mineRate} c/s Success Count => ${successCount}):`}
         logs={logs}
         onClear={() => {
           setLogs([]);
