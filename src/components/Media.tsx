@@ -4,20 +4,10 @@ import Link from "next/link";
 export default function Media() {
   const mediaList = [
     {
-      title: "代码",
+      title: "Github",
       linkText: "Github",
-      link: "https://github.com/vectorisvector/inscription",
-    },
-    {
-      title: "开发者",
-      linkText: "@cybervector_",
-      link: "https://twitter.com/cybervector_",
-    },
-    {
-      title: "Alpha",
-      linkText: "@ChaunceyCrypto",
-      link: "https://twitter.com/ChaunceyCrypto",
-    },
+      link: "https://github.dev/afteronesix/inscription",
+    }
   ];
 
   return (
@@ -46,7 +36,7 @@ export default function Media() {
       </div>
 
       <div className=" text-center">
-        打赏地址☕️: 0xcb64546921145fe3fa1316d08e4af5b6b60d3945
+        sendme coffie☕️: 0xb9F13fbAC92B837B42Ce2DAC2e343E3bd799c773
       </div>
     </div>
   );
